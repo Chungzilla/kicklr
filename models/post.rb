@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
     belongs_to :user
     has_many :tags, :through => :post_tags
-    validates :email, uniqueness: {case_sensitive: false}
+    validates_presence_of :title, message: "Cannot be blank"
+    validates_presence_of :content, message: "Cannot be blank"
 end
