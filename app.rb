@@ -9,3 +9,7 @@ require './models/post_tag.rb'
 
 set :database, {adapter: 'postgresql', database: 'kicklr'}
 
+get '/' do
+
+
+end
