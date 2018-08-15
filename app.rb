@@ -25,6 +25,12 @@ get "/sign-up" do
 end
 
 post "/sign-up" do
+    @user = User.find_by(username: params[:username])
+    
+    if @user && @user.password == params[:password]
+
+        flash[:warning] = "Username is already taken."
+    else
     @user = User.create(
         first_name: params[:first_name],
         last_name: params[:last_name],
@@ -34,14 +40,15 @@ post "/sign-up" do
         birthday: params[:brithday]
     )
 
-    #Sign User In
-    session[:user_id] = @user.id
+        #Sign User In
+        session[:user_id] = @user.id
 
-    #Notify User of sign-up was successful
-    flash[:nfo] = "Congrats, you have signed up! You are being taken to your homepage now!"
+        #Notify User of sign-up was successful
+        flash[:nfo] = "Congrats, you have signed up! You are being taken to your homepage now!"
 
-    #Send User to homepage
-    redirect '/'
+        #Send User to homepage
+        redirect '/'
+    end
 end
 
 #Render Sign-In form
