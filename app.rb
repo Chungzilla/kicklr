@@ -15,12 +15,12 @@ get '/' do
     if session[:user_id]
         erb :signed_in_homepage
     else
-        erb :layout
+        erb :index
     end
 end
 
 get "/sign-up" do
-    erb :sign_up, :layout => false
+    erb :sign_up
 end
 
 post "/sign-up" do
@@ -28,6 +28,6 @@ post "/sign-up" do
 end
 
 get "/sign-in" do
-    erb :signed_in_homepage, :layout => false
+    erb :signed_in_homepage
 end
 
