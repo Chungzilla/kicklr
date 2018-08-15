@@ -23,30 +23,24 @@ get "/sign-up" do
 end
 
 post "/sign-up" do
-    @user = User.find_by(username: params[:username])
-    
-    if @user && @user.password == params[:password]
-
-        flash[:warning] = "Username is already taken."
-    else
+   
     @user = User.create(
         first_name: params[:first_name],
         last_name: params[:last_name],
         username: params[:username],
         email: params[:email],
         password: params[:password],
-        birthday: params[:brithday]
+        birthday: params[:birthday]
     )
 
         #Sign User In
         session[:user_id] = @user.id
 
         #Notify User of sign-up was successful
-        flash[:nfo] = "Congrats, you have signed up! You are being taken to your homepage now!"
+        flash[:info] = "Congrats, you have signed up! You are being taken to your homepage now!"
 
         #Send User to homepage
         redirect '/'
-    end
 end
 
 #Render Sign-In form
@@ -62,10 +56,13 @@ post '/sign-in' do
     if @user && @user.password == params[:password]
 
         #Sign the user in
-        session[:userd_id] = @user.id
+        session[:user_id] = @user.id
 
-        #Confir to User that they are signed in
+        #Confirm to User that they are signed in
         flash[:info] = "You are signed in!"
+
+        #Send user to hompage
+        redirect '/'
     else
         flash[:warning] = "Your Username and/or Password is incorrect"
 
@@ -74,3 +71,13 @@ post '/sign-in' do
     end
 end
 
+post '/sign-out' do
+    #Grab current user id
+    @user = User.find_by(username: params[:username])
+
+    #Ends current cookie session
+    session[:user_id] = nil
+
+    #Send user to homepage 
+    redirect '/'
+end
