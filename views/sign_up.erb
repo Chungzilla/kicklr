@@ -1,11 +1,23 @@
-<form class="navbar-form navbar-left" role="search" action="/sign-up" method="post">
+<h1>Please Sign Up</h1>
+
+<form action="/sign-up" method="post">
     <div class="form-group">
-        <input type="text" name="first-name" id="first-name" placeholder="First Name">
-        <input type="text" name="last-name" id="last-name" placeholder="Last Name">
+        <input type="text" class="form-control" name="first-name" id="first_name" placeholder="First Name">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="last-name" id="last_name" placeholder="Last Name">
+    </div>
+    <div class="form-group">
         <input type="text" class="form-control" name="username" id="username" placeholder="Username">
-        <input type="email" name="email" id="email" placeholder="Email">
-        <input type="text" name="password" id="password" placeholder="Password">
-        <input type="date" name="birthday" id="birthday">
+    </div>
+    <div class="form-group">
+        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="password" id="password" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <input type="date" class="form-control" name="birthday" id="birthday">
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
 </form>
