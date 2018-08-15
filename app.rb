@@ -10,13 +10,7 @@ require './models/post_tag.rb'
 
 enable :sessions
 
-get '/' do
-    if session[:user_id]
-        erb :signed_in_homepage
-    else
-        erb :index
-    end
-end
+
 
 get "/sign-up" do
     erb :sign_up
@@ -69,6 +63,16 @@ post '/sign-in' do
         #Send user to sign-in again 
         redirect '/sign-in'
     end
+end
+
+get '/' do
+    if session[:user_id]
+        @user =  User.find(session[:user_id])
+        @user_posts = @user.posts
+        erb :signed_in_homepage
+    else
+        erb :index
+    end    
 end
 
 post '/sign-out' do
