@@ -8,8 +8,6 @@ require './models/post.rb'
 require './models/tag.rb'
 require './models/post_tag.rb'
 
-set :database, {adapter: 'postgresql', database: 'kicklr'}
-
 enable :sessions
 
 get '/' do
