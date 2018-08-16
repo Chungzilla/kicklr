@@ -71,7 +71,7 @@ get '/' do
         @user_posts = @user.posts
         erb :signed_in_homepage
     else
-        erb :index
+        erb :index, :layout => false;
     end    
 end
 
@@ -87,35 +87,55 @@ post '/sign-out' do
 end
 
 get '/post/new' do
-    if session[:user_id]
         erb :new_post
-
-    else
-        redirect '/sign-in'
-    end
 end
 
-post '/post/new' do
-    #User can create a new post 
-    #Only when signed in
-    if session[:user_id]
-        @user = User.find(session[:user_id])
-        @new_post = Post.create(
-             
-        )
-        erb :new_post
+get '/posts' do
+    @user = User.find(session[:user_id])
+    @user_posts = Post.order('created_at DESC').all
+
+    erb :signed_in_homepage
+end
+
+post '/posts' do
+    if params[:title] != nil
+        redirect '/'
+    else
+    @user = User.find(session[:user_id])
+    @new_post = Post.create(
+        title: params[:title],
+        content: params[:content], 
+        user_id: session[:user_id]
+    )
+    end
+    redirect '/posts'
+end
+
+get '/posts/:id/edit' do
+    @post_to_edit = Post.find(params[:id])
+    erb :edit_post
+end
+
+put '/posts/:id/edit' do
+    @post_to_edit = Post.find(params[:id])
+    if session[:id] == @post_to_edit.user_id
+        @post_to_edit.update(
+            title: params[:title],
+            content: params[:content])
+    
+    redirect '/posts'
     else
         redirect '/'
     end
 end
 
-get '/:username' do
-   #View profile by Username
-   erb :profile_view
-end
-
-get '/:username/edit-post/:id' do
-    #Allows user to edit a specific post
-
-    erb :edit_post
+delete '/posts/:id/delete' do
+    @post_to_delete = Post.find(params[:id])
+    if session[:id] == @post_to_delete.user_id
+        @post_to_delete.destroy
+   
+    redirect '/posts'
+    else
+        redirect '/'
+  end
 end
