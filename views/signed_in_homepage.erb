@@ -1,5 +1,61 @@
-<h1>You are signed in!</h1>
+<% #----------------> BEGINNAV BAR <------------------------------- %>
 
-<form action="/sign-out" method="post">
-<button type="submit" class="btn btn-default">Logout</button>
-<form>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+    <img src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+    Kicklr
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <ul class="nav justify-content-end">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= @user.username %> <span class="caret"></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Account</a>
+                    <a class="dropdown-item" href="#">View Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="#">View Profile</a>
+                    </a>
+                </div>
+            </li>
+            <form class="form-inline my-2 my-lg-0" action="/sign-out" method="post">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+            </form>
+        </ul>
+    </div>
+</nav>
+
+<% #----------------> END NAV BAR <------------------------------- %>
+<h1>
+    <a class="btn btn-primary" href="/post/new" role="button">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create Post</a> 
+</h1>
+
+
+
+<div class="card-deck">
+    <% @user_posts.each do |post| %>
+        <div class="card">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+            <h4 class="card-title"> <%= post.title %> </h4>
+            <p class="card-text"><small class="text-muted"> <%= post.created_at.strftime("%B %d, %Y - %H:%M:%S") %> </small></p>
+            <p class="card-text"> <%= post.content %> </p>
+            <p class="card-text"><small class="text-muted"> # + Tag </small></p>
+            </div>
+        </div>
+    <% end %>
+</div>

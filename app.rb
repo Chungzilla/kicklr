@@ -10,39 +10,6 @@ require './models/post_tag.rb'
 
 enable :sessions
 
-get '/' do
-    if session[:user_id]
-        erb :signed_in_homepage
-    else
-        erb :index
-    end
-end
-
-get "/sign-up" do
-    erb :sign_up
-end
-
-post "/sign-up" do
-   
-    @user = User.create(
-        first_name: params[:first_name],
-        last_name: params[:last_name],
-        username: params[:username],
-        email: params[:email],
-        password: params[:password],
-        birthday: params[:birthday]
-    )
-
-        #Sign User In
-        session[:user_id] = @user.id
-
-        #Notify User of sign-up was successful
-        flash[:info] = "Congrats, you have signed up! You are being taken to your homepage now!"
-
-        #Send User to homepage
-        redirect '/'
-end
-
 #Render Sign-In form
 get "/sign-in" do
     erb :sign_in
@@ -71,6 +38,43 @@ post '/sign-in' do
     end
 end
 
+get "/sign-up" do
+    erb :sign_up
+end
+
+post "/sign-up" do
+   
+    @user = User.create(
+        first_name: params[:first_name],
+        last_name: params[:last_name],
+        username: params[:username],
+        email: params[:email],
+        password: params[:password],
+        birthday: params[:birthday]
+    )
+
+        #Sign User In
+        session[:user_id] = @user.id
+
+        #Notify User of sign-up was successful
+        flash[:info] = "Congrats, you have signed up! You are being taken to your homepage now!"
+
+        #Send User to homepage
+        redirect '/'
+end
+
+
+
+get '/' do
+    if session[:user_id]
+        @user =  User.find(session[:user_id])
+        @user_posts = @user.posts
+        erb :signed_in_homepage
+    else
+        erb :index
+    end    
+end
+
 post '/sign-out' do
     #Grab current user id
     @user = User.find_by(username: params[:username])
@@ -80,4 +84,30 @@ post '/sign-out' do
 
     #Send user to homepage 
     redirect '/'
+end
+
+get '/post/new' do
+    #User can create a new post 
+
+    #Only when signed in
+    if session[:user_id]
+        @user = User.find(session[:user_id])
+        @new_post = Post.create(
+             
+        )
+        erb :new_post
+    else
+        redirect '/'
+    end
+end
+
+get '/:username' do
+   #View profile by Username
+   erb :profile_view
+end
+
+get '/:username/edit-post/:id' do
+    #Allows user to edit a specific post
+
+    erb :edit_post
 end
