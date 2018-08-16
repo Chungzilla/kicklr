@@ -23,7 +23,7 @@
                 <%= @user.username %> <span class="caret"></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Account</a>
+                    <a class="dropdown-item" href="/users/<%= @user.username %>/account">Account</a>
                     <a class="dropdown-item" href="#">View Profile</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">
@@ -31,6 +31,9 @@
                     </a>
                 </div>
             </li>
+
+            
+
             <form class="form-inline my-2 my-lg-0" action="/sign-out" method="post">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
             </form>
@@ -40,8 +43,9 @@
 
 <% #----------------> END NAV BAR <------------------------------- %>
 <h1>
-    <a class="btn btn-primary" href="/post/new" role="button">
-    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create Post</a> 
+<form class="form-inline my-2 my-lg-0" action="/post/new" method="get">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create Post</button>
+</form>
 </h1>
 
 
@@ -54,8 +58,9 @@
             <h4 class="card-title"> <%= post.title %> </h4>
             <p class="card-text"><small class="text-muted"> <%= post.created_at.strftime("%B %d, %Y - %H:%M:%S") %> </small></p>
             <p class="card-text"> <%= post.content %> </p>
-            <p class="card-text"><small class="text-muted"> # + Tag </small></p>
+            <p class="card-text"><small class="text-muted"> Tag </small></p>
             </div>
+            <a href="/posts/<%= post.id %>/edit" class="btn btn-primary">Edit</a>
         </div>
     <% end %>
 </div>
