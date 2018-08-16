@@ -1,9 +1,14 @@
-<h1>Create New </h1>
+<h1>Create New Post</h1>
 
-<form action="/sign-up" method="post">
+<form action="/post/new" method="post">
     <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Title</label>
-    <input type="text" class="form-control" placeholder="Text input">
+        <input type="text" class="form-control form-control-lg" name="title" id="title" placeholder="Title">
+    </div>
+    <div class="form-group">
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Content"></textarea>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="tags" id="tags" placeholder="#tags">
     </div>
     
     <button type="submit" class="btn btn-default">Submit</button>

@@ -87,8 +87,16 @@ post '/sign-out' do
 end
 
 get '/post/new' do
-    #User can create a new post 
+    if session[:user_id]
+        erb :new_post
 
+    else
+        redirect '/sign-in'
+    end
+end
+
+post '/post/new' do
+    #User can create a new post 
     #Only when signed in
     if session[:user_id]
         @user = User.find(session[:user_id])
