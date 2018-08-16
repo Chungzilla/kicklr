@@ -31,19 +31,20 @@ post '/sign-in' do
         #Send user to hompage
         redirect '/'
     else
-        flash[:warning] = "Your Username and/or Password is incorrect"
+        flash[:warning] = "Your Username and/or Password is incorrect."
 
         #Send user to sign-in again 
         redirect '/sign-in'
     end
 end
 
+#Renders Sign Up page
 get "/sign-up" do
     erb :sign_up
 end
 
+#Creates new account for user
 post "/sign-up" do
-   
     @user = User.create(
         first_name: params[:first_name],
         last_name: params[:last_name],
@@ -53,18 +54,18 @@ post "/sign-up" do
         birthday: params[:birthday]
     )
 
-        #Sign User In
-        session[:user_id] = @user.id
+    #Sign User In
+    session[:user_id] = @user.id
 
-        #Notify User of sign-up was successful
-        flash[:info] = "Congrats, you have signed up! You are being taken to your homepage now!"
+    #Notify User of sign-up was successful
+    flash[:info] = "Congrats, you have signed up! You are being taken to your homepage now!"
 
-        #Send User to homepage
-        redirect '/'
+    #Send User to homepage
+    redirect '/'
 end
 
 
-
+#Root - view user page when signed in/ landing page when siged out
 get '/' do
     if session[:user_id]
         @user =  User.find(session[:user_id])
@@ -75,6 +76,7 @@ get '/' do
     end    
 end
 
+#Signs out current user
 post '/sign-out' do
     #Grab current user id
     @user = User.find_by(username: params[:username])
@@ -86,6 +88,7 @@ post '/sign-out' do
     redirect '/'
 end
 
+#Renders Create Post page
 get '/post/new' do
         erb :new_post
 end
@@ -98,17 +101,18 @@ get '/posts' do
 end
 
 post '/posts' do
-    if params[:title] != nil
+    if session[:user_id]
+        @user = User.find(session[:user_id])
+        Post.create(
+            title: params[:title],
+            content: params[:content], 
+            user_id: session[:user_id]
+        )
         redirect '/'
     else
-    @user = User.find(session[:user_id])
-    @new_post = Post.create(
-        title: params[:title],
-        content: params[:content], 
-        user_id: session[:user_id]
-    )
+        flash[:warning] = "You must be logged in to create a post."
+        redirect '/'
     end
-    redirect '/posts'
 end
 
 get '/posts/:id/edit' do
@@ -118,24 +122,32 @@ end
 
 put '/posts/:id/edit' do
     @post_to_edit = Post.find(params[:id])
-    if session[:id] == @post_to_edit.user_id
-        @post_to_edit.update(
-            title: params[:title],
-            content: params[:content])
-    
+    @post_to_edit.update(
+        title: params[:title],
+        content: params[:content],
+        )
     redirect '/posts'
-    else
-        redirect '/'
-    end
+
 end
 
 delete '/posts/:id/delete' do
     @post_to_delete = Post.find(params[:id])
-    if session[:id] == @post_to_delete.user_id
-        @post_to_delete.destroy
-   
-    redirect '/posts'
-    else
-        redirect '/'
-  end
+    @post_to_delete.destroy
+ 
+    redirect '/'
+end
+
+get '/users/:username/account' do
+    @user = User.find_by(username: params[:username])
+
+    erb :user_account
+end
+
+#Delete User account
+delete '/users/:id' do
+    @user = User.find(params[:id])
+    @user.destroy
+    session[:user_id] = nil
+    flash[:info] = "Your account has been successfully deleted."
+    redirect '/'
 end

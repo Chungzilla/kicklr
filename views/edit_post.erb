@@ -1,3 +1,5 @@
+
+
 <form method="POST" action="/posts/<%= @post_to_edit.id %>/edit">
     <input type="hidden" name="_method" value="PUT">
     <div class="form-group">
@@ -8,7 +10,9 @@
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
 </form>
-<form action="/posts/<%= @post_to_delte.id %>/edit" method="post">
+
+
+<form action="/posts/<%= @post_to_edit.id %>/delete" method="post">
   <input type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete">
 </form>

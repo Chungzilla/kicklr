@@ -23,7 +23,7 @@
                 <%= @user.username %> <span class="caret"></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Account</a>
+                    <a class="dropdown-item" href="/users/<%= @user.username %>/account">Account</a>
                     <a class="dropdown-item" href="#">View Profile</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">
@@ -31,6 +31,9 @@
                     </a>
                 </div>
             </li>
+
+            
+
             <form class="form-inline my-2 my-lg-0" action="/sign-out" method="post">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
             </form>
@@ -58,7 +61,6 @@
             <p class="card-text"><small class="text-muted"> Tag </small></p>
             </div>
             <a href="/posts/<%= post.id %>/edit" class="btn btn-primary">Edit</a>
-            <a href="/posts/<%= post.id %>/delete" class="btn btn-primary">Delete</a>
         </div>
     <% end %>
 </div>
