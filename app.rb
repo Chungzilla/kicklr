@@ -58,7 +58,7 @@ post "/sign-up" do
     session[:user_id] = @user.id
 
     #Notify User of sign-up was successful
-    flash[:info] = "Congrats, you have signed up! You are being taken to your homepage now!"
+    flash[:info] = "Congrats, you have signed up!"
 
     #Send User to homepage
     redirect '/'
