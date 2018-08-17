@@ -10,7 +10,6 @@ require './models/post_tag.rb'
 
 enable :sessions
 
-config.assets.initialize_on_precompile = true
 
 
 #Render Sign-In form
