@@ -5,3 +5,5 @@ gem 'sinatra-activerecord'
 gem 'rake'
 gem 'pg'
 gem 'sinatra-flash'
+
+ruby '2.4.4'
