@@ -10,7 +10,7 @@ require './models/post_tag.rb'
 
 enable :sessions
 
-
+set :public_folder, File.join(APP_ROOT, "public")
 
 #Render Sign-In form
 get "/sign-in" do
