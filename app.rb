@@ -151,3 +151,12 @@ delete '/users/:id' do
     flash[:info] = "Your account has been successfully deleted."
     redirect '/'
 end
+
+get '/users' do
+        @all_users = User.all
+        @user = User.find(session[:user_id])
+        @user_posts = Post.order('created_at DESC').all
+
+        erb :all_users
+    
+end
