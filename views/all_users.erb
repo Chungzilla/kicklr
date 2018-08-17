@@ -1,5 +1,3 @@
-<% #----------------> BEGINNAV BAR <------------------------------- %>
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">
     <img src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -16,9 +14,6 @@
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/users">Bloggers <span class="sr-only"></span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
             </li>
         </ul>
         <ul class="nav justify-content-end">
@@ -46,23 +41,21 @@
 </nav>
 
 <% #----------------> END NAV BAR <------------------------------- %>
-<h1>
-<form class="form-inline my-2 my-lg-0" action="/post/new" method="get">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create Post</button>
-</form>
-</h1>
 
+<h2>Check Out Who's Blogging!</h2>
 
-
-
-    <% @user_posts.each do |post| %>
+    
+    <% @all_users.each do |thing| %>
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title"> <%= post.title %> </h4>
-                <p class="card-text"><small class="text-muted"> <%= post.created_at.strftime("%B %d, %Y - %H:%M:%S") %> </small></p>
-                <p class="card-text"> <%= post.content %> </p>
-                <p class="card-text"><small class="text-muted"> Tag </small></p>
-                <a href="/posts/<%= post.id %>/edit" class="btn btn-primary">Edit</a>
+                <h4 class="card-title">
+                
+                <a href="/users/<%= thing.id %>">
+                    <%= thing.username %>
+                </a>
+        
+                </h4>
+                
             </div>
             
         </div>

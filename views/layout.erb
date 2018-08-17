@@ -9,9 +9,10 @@
 </head>
 <body>
     
-    <% flash.keys.each do |message| %>
+    <% flash.keys.each do |type| %>
         <div> 
-            <%= message %> 
+            <%= flash[type] %> 
+            <a href="#" class="close">&times;</a>
         </div>
     <% end %>
 

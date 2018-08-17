@@ -58,7 +58,7 @@ post "/sign-up" do
     session[:user_id] = @user.id
 
     #Notify User of sign-up was successful
-    flash[:info] = "Congrats, you have signed up! You are being taken to your homepage now!"
+    flash[:info] = "Congrats, you have signed up!"
 
     #Send User to homepage
     redirect '/'
@@ -150,4 +150,13 @@ delete '/users/:id' do
     session[:user_id] = nil
     flash[:info] = "Your account has been successfully deleted."
     redirect '/'
+end
+
+get '/users' do
+        @all_users = User.all
+        @user = User.find(session[:user_id])
+        @user_posts = Post.order('created_at DESC').all
+
+        erb :all_users
+    
 end
