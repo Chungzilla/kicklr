@@ -3,22 +3,22 @@
     <input type="hidden" name="_method" value="PUT">
     <div class="card" style="width: 18rem;">
         <div class="card-body form-row">
-            <h5 class="card-title">
-                <label for="title">Title:</lable>
-                <input type="text" class="form-control" name="title" id="title" value="<%= @post_to_edit.title %>">
-            </h5>   
-        </div>
-        <div class="form-group">
-            <label for="content">Content:</label>
-            <textarea class="form-control" name="content" id="content"><%= @post_to_edit.content %></textarea>
-        </div>
-        <div class="card-body">
-            <button style="color:white; background-color:green" type="submit" class="btn btn-default">Submit</button>
+        <h5 class="card-title">
+            <label for="title">Title:</lable>
+            <input type="text" class="form-control" name="title" id="title" value="<%= @post_to_edit.title %>">
+        </h5>   
+    </div>
+    <div class="form-group">
+        <label for="content">Content:</label>
+        <textarea class="form-control" name="content" id="content"><%= @post_to_edit.content %></textarea>
+    </div>
+    <div class="card-body">
+    <button style="color:white; background-color:green" type="submit" class="btn btn-default">Submit</button>
 </form>
 
-            <form action="/posts/<%= @post_to_edit.id %>/delete" method="post">
-                <input type="hidden" name="_method" value="DELETE">
-                <input style="background-color:red" class="btn btn-primary" type="submit" value="Delete">
-            </form>
-        </div>
+        <form action="/posts/<%= @post_to_edit.id %>/delete" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input style="background-color:red" class="btn btn-primary" type="submit" value="Delete">
+        </form>
     </div>
+</div>

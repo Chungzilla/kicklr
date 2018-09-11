@@ -19,10 +19,10 @@
         <ul class="nav justify-content-end">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= @user.username %> <span class="caret"></span>
+                <%= @user_to_edit.username %> <span class="caret"></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/users/<%= @user.username %>/account">Account</a>
+                    <a class="dropdown-item" href="/users/<%= @user_to_edit.id %>/edit">Account</a>
                     <a class="dropdown-item" href="#">View Profile</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">
@@ -40,10 +40,37 @@
     </div>
 </nav>
 
-<h2> <%=@user.username %>'s Account</h2>
+<div class="wrapper">
+    <h2> <%=@user_to_edit.username %>'s Account</h2>
 
-<form method="POST" action="/users/<%= @user.id %>">
-    <input type="hidden" name="_method" value="DELETE">
-    <button type="submit" class="btn btn-default">Delete Account</button>
-</form>
+    <form method="POST" acion="/users/<%= @user_to_edit.id %>/edit">
+    <input type="hidden" name="_method" value="PUT">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="first_name" id="first_name" value="<%=@user_to_edit.first_name %>">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="last_name" id="last_name" value="<%=@user_to_edit.last_name %>">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="username" id="username" value="<%=@user_to_edit.username %>">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" name="email" id="email" value="<%=@user_to_edit.email %>">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="password" id="password" value="<%=@user_to_edit.password %>">
+                  
+                </div>
+                <div class="form-group">
+                    <input type="date" class="form-control" name="birthday" id="birthday" value="<%= @user_to_edit.birthday %>">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+</div>
+<div>
+    <form action="/users/<%= @user_to_edit.id %>/delete" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" class="btn btn-default" value="Delete Account">
+    </form>
+</div>
 

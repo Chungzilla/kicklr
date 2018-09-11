@@ -140,18 +140,35 @@ delete '/posts/:id/delete' do
     redirect '/'
 end
 
-get '/users/:username/account' do
-    @user = User.find_by(username: params[:username])
+get '/users/:id/edit' do
+    @user_to_edit = User.find(params[:id])
 
     erb :user_account
 end
 
+put '/users/:id/edit' do
+    @user_to_edit = User.find(params[:id])
+    @user_to_edit.update(
+        first_name: params[:first_name],
+        last_name: params[:last_name],
+        username: params[:username],
+        email: params[:email],
+        password: params[:password],
+        birthday: params[:birthday]
+        )
+    redirect '/'
+
+end
+
 #Delete User account
-delete '/users/:id' do
+delete '/users/:id/delete' do
     @user = User.find(params[:id])
     @user.destroy
-    session[:user_id] = nil
+
     flash[:info] = "Your account has been successfully deleted."
+
+   
+    
     redirect '/'
 end
 
