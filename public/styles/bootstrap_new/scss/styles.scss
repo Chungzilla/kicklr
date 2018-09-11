@@ -1,5 +1,105 @@
 @import 'colors';
 
+#override .navbar{
+  width: 80%;
+  padding: 10px 20px;
+  background-color: $seablue;
+  color: $carrib_green;
+    
+  a{
+    color: $carrib_green;
+  }
+
+  a:hover {
+    color: $hotpink;
+  }
+
+  .dropdown-menu{
+    background-color: $seablue;
+
+      .dropdown-item{
+
+      }
+  }
+
+  h1 {
+    .form-inline{
+      .btn {
+        color: $seablue;
+      }
+    }
+  }
+
+  .btn{
+    color: $carrib_green;
+    border: solid 1px $carrib_green;
+  }
+
+}
+
+#override #post-wrapper{
+  background-color: $seablue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+    .card{
+    margin: 10px;
+    width: 400px;
+    color: $seablue;
+    background-color: $carrib_green;
+    border: solid 5px $hotpink;
+    }
+
+  h1 {
+    .form-inline{
+      .btn {
+        color: $carrib_green;
+        background-color: $seablue;
+      }
+    }
+  }
+
+}
+
+#override {
+  background-color: $seablue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+    #main{
+      margin-top: 20px;
+        a{
+          color: $carrib_green;
+        }
+        a:hover{
+          color: $hotpink;
+        }
+    }
+    .wrapper{
+      width: 500px;
+      padding: 40px;
+      margin-top: 150px;
+      border: solid 5px $toolbox;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: $seablue;
+      background-color: $carrib_green;
+
+        input{
+          border: solid 1px black;
+        }
+
+        button{
+          color: $carrib_green;
+          background-color: $toolbox;
+        }
+        
+    }
+}
 .btn-primary {
     color: #fff;
     border-color: #007bff;

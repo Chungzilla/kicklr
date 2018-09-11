@@ -1,8 +1,8 @@
-<% #----------------> BEGINNAV BAR <------------------------------- %>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+<nav class="navbar navbar-expand-lg">
     <a class="navbar-brand" href="#">
-    <img src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+    <img src="/images/kicklr_k.png" width="30" height="30" class="d-inline-block align-top" alt="">
     Kicklr
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,9 +16,6 @@
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/users">Bloggers <span class="sr-only"></span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
             </li>
         </ul>
         <ul class="nav justify-content-end">
@@ -46,14 +43,14 @@
 </nav>
 
 <% #----------------> END NAV BAR <------------------------------- %>
+
+<div id="post-wrapper">
+
 <h1>
 <form class="form-inline my-2 my-lg-0" action="/post/new" method="get">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create Post</button>
 </form>
 </h1>
-
-
-
 
     <% @user_posts.each do |post| %>
         <div class="card">
@@ -67,3 +64,5 @@
             
         </div>
     <% end %>
+
+</div>

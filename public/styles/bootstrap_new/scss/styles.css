@@ -1,3 +1,65 @@
+#override .navbar {
+  width: 80%;
+  padding: 10px 20px;
+  background-color: #05668D;
+  color: #0ECD99; }
+  #override .navbar a {
+    color: #0ECD99; }
+  #override .navbar a:hover {
+    color: #FC6EB4; }
+  #override .navbar .dropdown-menu {
+    background-color: #05668D; }
+  #override .navbar h1 .form-inline .btn {
+    color: #05668D; }
+  #override .navbar .btn {
+    color: #0ECD99;
+    border: solid 1px #0ECD99; }
+
+#override #post-wrapper {
+  background-color: #05668D;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px; }
+  #override #post-wrapper .card {
+    margin: 10px;
+    width: 400px;
+    color: #05668D;
+    background-color: #0ECD99;
+    border: solid 5px #FC6EB4; }
+  #override #post-wrapper h1 .form-inline .btn {
+    color: #0ECD99;
+    background-color: #05668D; }
+
+#override {
+  background-color: #05668D;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  #override #main {
+    margin-top: 20px; }
+    #override #main a {
+      color: #0ECD99; }
+    #override #main a:hover {
+      color: #FC6EB4; }
+  #override .wrapper {
+    width: 500px;
+    padding: 40px;
+    margin-top: 150px;
+    border: solid 5px #7C67CB;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #05668D;
+    background-color: #0ECD99; }
+    #override .wrapper input {
+      border: solid 1px black; }
+    #override .wrapper button {
+      color: #0ECD99;
+      background-color: #7C67CB; }
+
 .btn-primary {
   color: #fff;
   border-color: #007bff; }
