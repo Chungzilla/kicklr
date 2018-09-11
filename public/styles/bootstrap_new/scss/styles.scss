@@ -1,41 +1,48 @@
 @import 'colors';
 
-#override .navbar{
-  width: 80%;
-  padding: 10px 20px;
-  background-color: $seablue;
-  color: $carrib_green;
-    
-  a{
-    color: $carrib_green;
-  }
+#override {
 
-  a:hover {
-    color: $hotpink;
-  }
-
-  .dropdown-menu{
+  .navbar{
+    width: 80%;
+    padding: 10px 20px;
     background-color: $seablue;
+    color: $carrib_green;
+      
+    a{
+      color: $carrib_green;
+    }
 
-      .dropdown-item{
+    a:hover {
+      color: $hotpink;
+    
+    }
 
-      }
-  }
+    .dropdown-menu{
+      background-color: $seablue;
 
-  h1 {
-    .form-inline{
-      .btn {
-        color: $seablue;
+        .dropdown-item{
+      
+        }
+    }
+
+    h1 {
+      .form-inline{
+        .btn {
+          color: $seablue;
+        }
       }
     }
+
+    .btn{
+      color: $carrib_green;
+      border: solid 1px $carrib_green;
+    }
+
+    
+
   }
 
-  .btn{
-    color: $carrib_green;
-    border: solid 1px $carrib_green;
-  }
 
-}
 
 #override #post-wrapper{
   background-color: $seablue;
@@ -50,6 +57,19 @@
     background-color: $carrib_green;
     border: solid 5px $hotpink;
     }
+
+  h1 {
+    .form-inline{
+      .btn {
+        color: $carrib_green;
+        background-color: $seablue;
+      }
+    }
+  }
+
+}
+
+
 
   h1 {
     .form-inline{
@@ -92,7 +112,7 @@
         input{
           border: solid 1px black;
         }
-
+        
         button{
           color: $carrib_green;
           background-color: $toolbox;

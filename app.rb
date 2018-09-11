@@ -92,7 +92,8 @@ end
 
 #Renders Create Post page
 get '/post/new' do
-        erb :new_post
+    @user = User.find(session[:user_id])
+     erb :new_post
 end
 
 get '/posts' do
