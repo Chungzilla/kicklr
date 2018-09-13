@@ -1,0 +1,35 @@
+<% if session[:id] %>
+
+    <li class="nav-item active">
+    <a class="nav-link" href="/users">Bloggers <span class="sr-only"></span></a>
+    </li>
+    </ul>
+    <ul class="nav justify-content-end">
+    <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= @user.username %> <span class="caret"></span>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="/users/<%= @user.id %>/edit">Account</a>
+    </div>
+    </li>
+
+
+
+    <form class="form-inline my-2 my-lg-0" action="/sign-out" method="post">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+    </form>
+
+    <% else %>
+
+        <li class="nav-item>
+            <a href="/sign-up"> Sign Up </a>
+        </li>
+
+        <li class="nav-item>
+            <a href="/sign-in"> Login </a>
+        </li>
+
+    </ul>
+
+    <% end %>
