@@ -151,7 +151,7 @@ get '/users/:id' do
 end
 
 get '/users/:id/edit' do
-    @user_to_edit = User.find(params[:id])
+    @user = User.find(params[:id])
 
     erb :user_account
 end
@@ -172,14 +172,15 @@ end
 
 #Delete User account
 delete '/users/:id/delete' do
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
     @user.destroy
+
+    session[:user_id] = nil
+    
+    redirect '/'
 
     flash[:info] = "Your account has been successfully deleted."
 
-   
-    
-    redirect '/'
 end
 
 get '/users' do
