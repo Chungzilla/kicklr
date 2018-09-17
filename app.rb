@@ -119,6 +119,7 @@ post '/posts' do
 end
 
 get '/posts/:id/edit' do
+    @user = User.find(params[:id])
     @post_to_edit = Post.find(params[:id])
     erb :edit_post
 end
@@ -138,6 +139,15 @@ delete '/posts/:id/delete' do
     @post_to_delete.destroy
  
     redirect '/'
+end
+
+get '/users/:id' do
+    @user = User.find(session[:user_id])
+    @other_user = User.find(params[:id])
+    @other_user_posts = @other_user.posts.order('created_at DESC').all
+
+
+    erb :other_users
 end
 
 get '/users/:id/edit' do
@@ -173,8 +183,8 @@ delete '/users/:id/delete' do
 end
 
 get '/users' do
+    @user = User.find(session[:user_id])
         @all_users = User.all
-        @user = User.find(session[:user_id])
         @user_posts = Post.order('created_at DESC').all
 
         erb :all_users

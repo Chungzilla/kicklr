@@ -1,62 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-    <img src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-    Kicklr
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/users">Bloggers <span class="sr-only"></span></a>
-            </li>
-        </ul>
-        <ul class="nav justify-content-end">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= @user.username %> <span class="caret"></span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/users/<%= @user.username %>/account">Account</a>
-                    <a class="dropdown-item" href="#">View Profile</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                        <a class="dropdown-item" href="#">View Profile</a>
-                    </a>
-                </div>
-            </li>
+<div id="post-wrapper">
 
-            
+    <h2>Check Out Who's Blogging!</h2>
 
-            <form class="form-inline my-2 my-lg-0" action="/sign-out" method="post">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
-            </form>
-        </ul>
-    </div>
-</nav>
-
-<% #----------------> END NAV BAR <------------------------------- %>
-
-<h2>Check Out Who's Blogging!</h2>
-
-    
-    <% @all_users.each do |thing| %>
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">
-                
-                <a href="/users/<%= thing.id %>">
-                    <%= thing.username %>
-                </a>
         
-                </h4>
+        <% @all_users.each do |thing| %>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">
+                    
+                    <a href="/users/<%= thing.id %>">
+                        <%= thing.username %>
+                    </a>
+            
+                    </h4>
+                    
+                </div>
                 
             </div>
-            
-        </div>
-    <% end %>
+        <% end %>
+</div>
