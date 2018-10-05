@@ -1,4 +1,4 @@
-# Kicklr
+# <img src="https://github.com/Chungzilla/chungzilla.github.io/blob/master/images/kicklr_k.PNG" width="48"> icklr
 [![forthebadge](https://forthebadge.com/images/badges/made-with-ruby.svg)](https://forthebadge.com)
 
 Sneaker blog site that enables a user to sign up for an account and create relevant posts. A user can also view the posts of other users.
