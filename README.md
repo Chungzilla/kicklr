@@ -3,9 +3,10 @@
 
 Kicklr is a sneaker blog site that enables a user to sign up for an account and create relevant posts. A user can also view the posts of other users.
 
+## Getting Started
+
 <img src="https://media.giphy.com/media/3o7TKA9qD3bBwK6VYA/giphy.gif">
 
-## Getting Started
 
 ### Installation
 In order to install the app, you will need the latest version of Ruby installed onto your local machine. This app also uses a PostgreSQL object-relational database.
