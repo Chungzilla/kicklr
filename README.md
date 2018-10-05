@@ -17,8 +17,8 @@ Password: password
 ```
 
 ## Built With
-- Ruby
-- Sinatra
+- Ruby - programming lanuguage used
+- Sinatra - domain-specific languange and Ruby gem
 - Bootstrap - framework
 - SASS - custom styling
 - PostgreSQL - relational database structure
