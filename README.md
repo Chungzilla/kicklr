@@ -20,11 +20,10 @@ Password: password
 ```
 
 ## Built With
-- Ruby - programming lanuguage used
-- Sinatra - domain-specific languange and Ruby gem
-- Bootstrap - framework
-- SASS - custom styling
-- PostgreSQL - relational database structure
+- [Ruby](https://www.ruby-lang.org/en/) - programming lanuguage used 
+- [Sinatra](https://github.com/sinatra/sinatra) - domain-specific languange and Ruby gem
+- [Bootstrap](https://github.com/twbs/bootstrap-rubygem) - front-end framework for styling
+- [PostgreSQL](https://www.postgresql.org/) - relational database structure
 
 ## Authors
 - **Jazmine Chung** - [Kicklr](https://kicklr.herokuapp.com)
