@@ -48,5 +48,8 @@ DEPENDENCIES
   sinatra-activerecord
   sinatra-flash
 
+RUBY VERSION
+   ruby 2.5.1p57
+
 BUNDLED WITH
-   1.16.3
+   1.16.5
