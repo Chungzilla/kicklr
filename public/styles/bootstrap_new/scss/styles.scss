@@ -125,6 +125,10 @@
     border-color: #007bff;
 }
 
+.navbar-toggler-icon{
+  color: black !important; 
+}
+
 .flash {
     border-radius: 2px;
     padding: 20px;
@@ -157,3 +161,5 @@
   .flash.hide {
     display: none;
   }
+
+

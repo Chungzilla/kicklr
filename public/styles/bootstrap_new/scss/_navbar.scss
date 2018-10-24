@@ -1,3 +1,4 @@
+@import 'colors';
 
 .navbar {
   position: relative;
@@ -206,7 +207,7 @@
     .active > .nav-link,
     .nav-link.show,
     .nav-link.active {
-      color: $navbar-light-active-color;
+      color: red;
     }
   }
 
